@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>স্টুডিও_X | পোর্টফোলিও</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@100..800&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-head: 'Anek Bangla', sans-serif;
+            --font-body: 'Hind Siliguri', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: #050505;
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, .nav-logo {
+            font-family: var(--font-head);
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+        }
+
+        .text-outline {
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+            color: transparent;
+        }
+
+        .project-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: scale(1.02) translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 10px;
+        }
+
+        /* Animation for views */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .view-animate {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-auto-rows: 250px;
+            gap: 20px;
+        }
+
+        @media (min-width: 1024px) {
+            .bento-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .item-large { grid-row: span 2; grid-column: span 1; }
+            .item-wide { grid-column: span 2; }
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 lg:p-12">
+
+    <!-- HOME VIEW -->
+    <div id="homeView" class="view-animate">
+        <!-- Navigation -->
+        <nav class="flex justify-between items-center mb-16">
+            <div class="nav-logo text-2xl font-extrabold tracking-tighter">স্টুডিও_X</div>
+            <button 
+                onclick="toggleModal(true)"
+                class="px-6 py-2 glass hover:bg-white hover:text-black transition-all font-medium text-sm flex items-center gap-2"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                প্রজেক্ট যুক্ত করুন
+            </button>
+        </nav>
+
+        <!-- Hero Section -->
+        <header class="mb-20 max-w-4xl">
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold leading-[1.1] mb-6">
+                ডিজিটাল যুগের জন্য <span class="text-outline">দৃশ্যমান</span> গল্প বলা।
+            </h1>
+            <p class="text-gray-400 text-lg md:text-xl max-w-xl font-light">
+                আমি ন্যূনতম নান্দনিকতার সাথে কার্যকরী ডিজাইনের সমন্বয়ে নিমজ্জিত অভিজ্ঞতা তৈরি করি।
+            </p>
+        </header>
+
+        <!-- Portfolio Grid -->
+        <main class="bento-grid" id="portfolioGrid">
+            <!-- Initial Mock Data -->
+            <div onclick="openProject('লুমিনা আইডেন্টিটি', 'ব্র্যান্ডিং', 'A1')" class="project-card glass p-6 flex flex-col justify-between item-large group">
+                <div class="h-full w-full bg-neutral-900 rounded-xl mb-4 overflow-hidden flex items-center justify-center">
+                    <span class="text-neutral-700 font-bold text-4xl group-hover:scale-110 transition-transform duration-700">A1</span>
+                </div>
+                <div>
+                    <p class="text-xs text-gray-500 uppercase tracking-widest mb-1">ব্র্যান্ডিং</p>
+                    <h3 class="text-xl font-bold">লুমিনা আইডেন্টিটি</h3>
+                </div>
+            </div>
+
+            <div onclick="openProject('স্পেশিয়াল কমার্স', 'ওয়েব ডিজাইন', 'W2')" class="project-card glass p-6 flex flex-col justify-between item-wide group">
+                <div class="h-full w-full bg-neutral-900 rounded-xl mb-4 overflow-hidden flex items-center justify-center">
+                    <span class="text-neutral-700 font-bold text-4xl group-hover:scale-110 transition-transform duration-700">W2</span>
+                </div>
+                <div>
+                    <p class="text-xs text-gray-500 uppercase tracking-widest mb-1">ওয়েব ডিজাইন</p>
+                    <h3 class="text-xl font-bold">স্পেশিয়াল কমার্স</h3>
+                </div>
+            </div>
+
+            <div onclick="openProject('জেনিথ অ্যাপ', 'মোবাইল', 'M3')" class="project-card glass p-6 flex flex-col justify-between group">
+                <div class="h-full w-full bg-neutral-900 rounded-xl mb-4 overflow-hidden flex items-center justify-center">
+                    <span class="text-neutral-700 font-bold text-4xl group-hover:scale-110 transition-transform duration-700">M3</span>
+                </div>
+                <div>
+                    <p class="text-xs text-gray-500 uppercase tracking-widest mb-1">মোবাইল</p>
+                    <h3 class="text-xl font-bold">জেনিথ অ্যাপ</h3>
+                </div>
+            </div>
+
+            <div onclick="openProject('ফ্লাক্স ড্যাশবোর্ড', 'ইউআই/ইউএক্স', 'U4')" class="project-card glass p-6 flex flex-col justify-between group">
+                <div class="h-full w-full bg-neutral-900 rounded-xl mb-4 overflow-hidden flex items-center justify-center">
+                    <span class="text-neutral-700 font-bold text-4xl group-hover:scale-110 transition-transform duration-700">U4</span>
+                </div>
+                <div>
+                    <p class="text-xs text-gray-500 uppercase tracking-widest mb-1">ইউআই/ইউএক্স</p>
+                    <h3 class="text-xl font-bold">ফ্লাক্স ড্যাশবোর্ড</h3>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- PROJECT DETAIL VIEW -->
+    <div id="projectView" class="hidden view-animate">
+        <nav class="flex justify-between items-center mb-12">
+            <button onclick="closeProject()" class="group flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:-translate-x-1 transition-transform"><path d="m15 18-6-6 6-6"/></svg>
+                পোর্টফোলিওতে ফিরে যান
+            </button>
+            <div class="text-sm font-bold opacity-50 tracking-widest uppercase" id="detailCategory">বিভাগ</div>
+        </nav>
+
+        <header class="mb-12">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-4" id="detailTitle">প্রজেক্টের শিরোনাম</h1>
+            <p class="text-gray-400 max-w-2xl leading-relaxed">
+                এই প্রজেক্টের ডিজাইন প্রক্রিয়া এবং চূড়ান্ত বাস্তবায়নের একটি গভীর বিশ্লেষণ। এই কেস স্টাডিটি ভিজ্যুয়াল আইডেন্টিটি, ইউজার এক্সপেরিয়েন্স চ্যালেঞ্জ এবং তৈরির পর্যায়ে উদ্ভাবনী সমাধানগুলো অন্বেষণ করে।
+            </p>
+        </header>
+
+        <div class="w-full glass aspect-video overflow-hidden mb-12" id="detailImageContainer"></div>
+
+        <section class="grid md:grid-cols-3 gap-12 mb-20">
+            <div class="md:col-span-2 space-y-8">
+                <h2 class="text-2xl font-bold">চ্যালেঞ্জ</h2>
+                <p class="text-gray-400">ডিজাইনের শুরুর দিকে আমাদের প্রধান চ্যালেঞ্জ ছিল ব্যবহারকারীর সাবলীলতা বজায় রাখা। আমরা এমন একটি সমাধান খুঁজছিলাম যা একই সাথে আধুনিক এবং সহজে ব্যবহারযোগ্য হবে।</p>
+                <h2 class="text-2xl font-bold">সমাধান</h2>
+                <p class="text-gray-400">আমরা একটি মিনিমালিস্ট গ্রিড সিস্টেম ব্যবহার করেছি যা তথ্যের গুরুত্ব অনুযায়ী সাজানো। এটি ব্যবহারকারীকে বিভ্রান্ত না করে সঠিক গন্তব্যে নিয়ে যেতে সাহায্য করে।</p>
+            </div>
+            <div class="glass p-8 h-fit space-y-6">
+                <div>
+                    <p class="text-xs uppercase text-gray-500 mb-1">সময়সীমা</p>
+                    <p class="font-medium">৪ সপ্তাহ</p>
+                </div>
+                <div>
+                    <p class="text-xs uppercase text-gray-500 mb-1">ভূমিকা</p>
+                    <p class="font-medium">প্রধান ডিজাইনার</p>
+                </div>
+                <div>
+                    <p class="text-xs uppercase text-gray-500 mb-1">টুলস</p>
+                    <p class="font-medium">ফিগমা, ওয়েবফ্লো, আফটার ইফেক্টস</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Upload Modal -->
+    <div id="uploadModal" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4">
+        <div class="glass w-full max-w-lg p-8 md:p-10 relative">
+            <button onclick="toggleModal(false)" class="absolute top-6 right-6 text-gray-400 hover:text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </button>
+            
+            <h2 class="text-3xl font-bold mb-6">প্রজেক্ট ফিচার করুন</h2>
+            
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs uppercase text-gray-500 mb-2">প্রজেক্টের ছবি</label>
+                    <div class="relative group">
+                        <input type="file" id="imageUpload" accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" onchange="previewFile()">
+                        <div id="dropZone" class="border-2 border-dashed border-white/10 rounded-xl py-12 flex flex-col items-center justify-center transition-colors group-hover:border-white/30">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="mb-2 text-gray-400"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
+                            <p class="text-sm text-gray-400" id="fileStatus">ছবি নির্বাচন করতে ক্লিক করুন</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs uppercase text-gray-500 mb-2">প্রজেক্টের শিরোনাম</label>
+                    <input type="text" id="projectTitle" placeholder="উদা: আধুনিক স্থাপত্য" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-white/40">
+                </div>
+
+                <div>
+                    <label class="block text-xs uppercase text-gray-500 mb-2">বিভাগ</label>
+                    <select id="projectCategory" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-white/40 appearance-none">
+                        <option value="ব্র্যান্ডিং" class="bg-black text-white">ব্র্যান্ডিং</option>
+                        <option value="ওয়েব ডিজাইন" class="bg-black text-white">ওয়েব ডিজাইন</option>
+                        <option value="মোবাইল" class="bg-black text-white">মোবাইল</option>
+                        <option value="ইউআই/ইউএক্স" class="bg-black text-white">ইউআই/ইউএক্স</option>
+                        <option value="ফটোগ্রাফি" class="bg-black text-white">ফটোগ্রাফি</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center gap-4 mt-8">
+                    <button onclick="handlePublish()" class="flex-1 bg-white text-black font-bold py-3 rounded-xl hover:bg-gray-200 transition-colors">গ্রিডে প্রকাশ করুন</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Toast -->
+    <div id="toast" class="fixed bottom-8 right-8 glass px-6 py-4 translate-y-24 transition-transform duration-500 flex items-center gap-3">
+        <div class="w-2 h-2 rounded-full bg-green-500"></div>
+        <p class="text-sm font-medium">প্রজেক্ট সফলভাবে যুক্ত হয়েছে!</p>
+    </div>
+
+    <script>
+        let selectedImageData = null;
+
+        function toggleModal(show) {
+            const modal = document.getElementById('uploadModal');
+            modal.style.display = show ? 'flex' : 'none';
+            if(!show) resetForm();
+        }
+
+        function openProject(title, category, imageData) {
+            const homeView = document.getElementById('homeView');
+            const projectView = document.getElementById('projectView');
+            
+            document.getElementById('detailTitle').innerText = title;
+            document.getElementById('detailCategory').innerText = category;
+            
+            const container = document.getElementById('detailImageContainer');
+            if (imageData.length < 5) {
+                container.innerHTML = `<div class="w-full h-full flex items-center justify-center bg-neutral-900 text-6xl font-bold text-neutral-800">${imageData}</div>`;
+            } else {
+                container.innerHTML = `<img src="${imageData}" class="w-full h-full object-cover">`;
+            }
+
+            homeView.classList.add('hidden');
+            projectView.classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        function closeProject() {
+            document.getElementById('homeView').classList.remove('hidden');
+            document.getElementById('projectView').classList.add('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        function previewFile() {
+            const file = document.querySelector('#imageUpload').files[0];
+            const status = document.querySelector('#fileStatus');
+            const reader = new FileReader();
+
+            reader.addEventListener("load", function () {
+                selectedImageData = reader.result;
+                status.innerText = "ছবি তৈরি: " + file.name;
+                status.classList.add('text-green-400');
+            }, false);
+
+            if (file) reader.readAsDataURL(file);
+        }
+
+        function resetForm() {
+            document.getElementById('projectTitle').value = '';
+            document.getElementById('imageUpload').value = '';
+            document.getElementById('fileStatus').innerText = 'ছবি নির্বাচন করতে ক্লিক করুন';
+            document.getElementById('fileStatus').classList.remove('text-green-400');
+            selectedImageData = null;
+        }
+
+        function handlePublish() {
+            const title = document.getElementById('projectTitle').value;
+            const category = document.getElementById('projectCategory').value;
+            const grid = document.getElementById('portfolioGrid');
+
+            if (!selectedImageData || !title) {
+                alert("দয়া করে একটি শিরোনাম দিন এবং একটি ছবি নির্বাচন করুন।");
+                return;
+            }
+
+            const card = document.createElement('div');
+            const modifiers = ['', 'item-large', 'item-wide'];
+            const randomModifier = modifiers[Math.floor(Math.random() * modifiers.length)];
+            card.className = `project-card glass p-6 flex flex-col justify-between group animate-new ${randomModifier}`;
+            
+            const currentImg = selectedImageData; 
+            card.onclick = () => openProject(title, category, currentImg);
+
+            card.innerHTML = `
+                <div class="h-full w-full bg-neutral-900 rounded-xl mb-4 overflow-hidden">
+                    <img src="${currentImg}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div>
+                    <p class="text-xs text-gray-500 uppercase tracking-widest mb-1">${category}</p>
+                    <h3 class="text-xl font-bold">${title}</h3>
+                </div>
+            `;
+
+            grid.prepend(card);
+            toggleModal(false);
+            showToast();
+        }
+
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.style.transform = 'translateY(0)';
+            setTimeout(() => toast.style.transform = 'translateY(150%)', 3000);
+        }
+    </script>
+</body>
+</html>
