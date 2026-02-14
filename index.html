@@ -87,6 +87,24 @@
             cursor: crosshair;
             touch-action: none;
         }
+
+        /* Video Container */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            border-radius: 24px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
 <body class="p-4 md:p-8 lg:p-12">
@@ -102,46 +120,70 @@
                 শুভ <span class="text-outline">ভ্যালেন্টাইনস</span> ডে.
             </h1>
             <p class="text-gray-600 text-lg md:text-xl max-w-xl font-light">
-                বিশেষ কিছু উপহার তোমার জন্য, প্রিন্ট করে দিলে হয়তো বেশি ভালো হতো। তুমি দেখো টাও..
+                বিশেষ কিছু উপহার তোমার জন্য, প্রিন্ট করে দিলে হয়তো বেশি ভালো হতো। তুমি দেখো তাও..
             </p>
         </header>
 
-        <!-- Main 3 Elements -->
-        <main class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Main Grid for 5 Cards -->
+        <main class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
             
             <!-- Element 1: Portrait Gallery -->
-            <div onclick="showView('galleryView')" class="project-card glass p-8 aspect-[3/4] group">
+            <div onclick="showView('galleryView')" class="project-card glass p-6 aspect-[3/4] group">
                 <div class="h-full w-full bg-neutral-100 rounded-xl mb-6 flex items-center justify-center overflow-hidden border border-black/5">
                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="text-gray-300 group-hover:scale-125 transition-transform duration-500"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
                 </div>
                 <div>
                     <p class="text-xs text-gray-400 uppercase tracking-widest mb-1">কালেকশন ০১</p>
-                    <h3 class="text-2xl font-bold">আমাদের গ্যালারি</h3>
-                    <p class="text-sm text-gray-500">আমাদের প্রিয় ছবিই গুলো দেখ</p>
+                    <h3 class="text-xl font-bold">আমাদের গ্যালারি</h3>
+                    <p class="text-xs text-gray-500">প্রিয় ছবিগুলো দেখ</p>
                 </div>
             </div>
 
             <!-- Element 2: Letter / Single Portrait -->
-            <div onclick="showView('letterView')" class="project-card glass p-8 aspect-[3/4] group">
+            <div onclick="showView('letterView')" class="project-card glass p-6 aspect-[3/4] group">
                 <div class="h-full w-full bg-[#f4f1ea] rounded-xl mb-6 flex items-center justify-center overflow-hidden border border-black/5">
-                    <div class="text-red-700 font-extrabold text-3xl rotate-[-5deg] tracking-tighter opacity-40 group-hover:opacity-100 transition-opacity">বিকল্পদেশ</div>
+                    <div class="text-red-700 font-extrabold text-2xl rotate-[-5deg] tracking-tighter opacity-40 group-hover:opacity-100 transition-opacity">চিঠি</div>
                 </div>
                 <div>
                     <p class="text-xs text-gray-400 uppercase tracking-widest mb-1">কালেকশন ০২</p>
-                    <h3 class="text-2xl font-bold">বিশেষ চিঠি</h3>
-                    <p class="text-sm text-gray-500">যা তোমাকে আমার মন বলতে চায়</p>
+                    <h3 class="text-xl font-bold">বিশেষ চিঠি</h3>
+                    <p class="text-xs text-gray-500">আমার মনের কথা</p>
                 </div>
             </div>
 
             <!-- Element 3: Scratchcard -->
-            <div onclick="showView('scratchView')" class="project-card glass p-8 aspect-[3/4] group">
+            <div onclick="showView('scratchView')" class="project-card glass p-6 aspect-[3/4] group">
                 <div class="h-full w-full bg-neutral-200 rounded-xl mb-6 flex items-center justify-center overflow-hidden border border-black/5">
-                    <div class="w-12 h-12 rounded-full border-2 border-dashed border-gray-400 animate-spin group-hover:bg-black group-hover:border-black transition-all"></div>
+                    <div class="w-10 h-10 rounded-full border-2 border-dashed border-gray-400 animate-spin group-hover:bg-black group-hover:border-black transition-all"></div>
                 </div>
                 <div>
                     <p class="text-xs text-gray-400 uppercase tracking-widest mb-1">কালেকশন ০৩</p>
-                    <h3 class="text-2xl font-bold">আরো কিছু উপহার</h3>
-                    <p class="text-sm text-gray-500">ছবিটি দেখতে স্ক্র্যাচ করো (Scratch to see)</p>
+                    <h3 class="text-xl font-bold">আরো কিছু উপহার</h3>
+                    <p class="text-xs text-gray-500">স্ক্র্যাচ করো</p>
+                </div>
+            </div>
+
+            <!-- Element 4: Video Story -->
+            <div onclick="showView('videoView')" class="project-card glass p-6 aspect-[3/4] group">
+                <div class="h-full w-full bg-red-50 rounded-xl mb-6 flex items-center justify-center overflow-hidden border border-black/5">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="red" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-125 transition-transform duration-500 opacity-60"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                </div>
+                <div>
+                    <p class="text-xs text-gray-400 uppercase tracking-widest mb-1">কালেকশন ০৪</p>
+                    <h3 class="text-xl font-bold">ভিডিও স্টোরি</h3>
+                    <p class="text-xs text-gray-500">ছোট একটি ঝলক</p>
+                </div>
+            </div>
+
+            <!-- Element 5: Audio Visual Card -->
+            <div onclick="showView('audioView')" class="project-card glass p-6 aspect-[3/4] group">
+                <div class="h-full w-full bg-blue-50 rounded-xl mb-6 flex items-center justify-center overflow-hidden border border-black/5">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-125 transition-transform duration-500 opacity-60"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+                </div>
+                <div>
+                    <p class="text-xs text-gray-400 uppercase tracking-widest mb-1">কালেকশন ০৫</p>
+                    <h3 class="text-xl font-bold">অডিও আর্ট</h3>
+                    <p class="text-xs text-gray-500">সুর ও ছবি</p>
                 </div>
             </div>
 
@@ -157,10 +199,7 @@
             </button>
             <div class="text-sm font-bold opacity-30 uppercase tracking-widest">গ্যালারি তালিকা</div>
         </nav>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="galleryListContainer">
-            <!-- Images will be injected here via JavaScript -->
-        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="galleryListContainer"></div>
     </div>
 
     <!-- 2. LETTER VIEW -->
@@ -171,11 +210,8 @@
                 ফিরে যান
             </button>
         </nav>
-        
         <div class="max-w-2xl mx-auto glass p-4 md:p-12 bg-white shadow-2xl">
-            <div id="letterImageContainer" class="w-full h-full flex items-center justify-center">
-                <!-- Single Portrait Image goes here -->
-            </div>
+            <div id="letterImageContainer" class="w-full h-full flex items-center justify-center"></div>
             <div class="mt-8 border-t border-black/5 pt-8 text-center italic text-gray-400">
                 <p>— শ্ৰুত্যানন্দ ডাকুয়া</p>
             </div>
@@ -187,53 +223,90 @@
         <nav class="flex justify-between items-center mb-12">
             <button onclick="backToHome()" class="group flex items-center gap-2 text-gray-500 hover:text-black transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-                ফিরে যাও
+                ফিরে যান
             </button>
-            <div class="text-xs uppercase text-gray-400">মাউস বা আঙুল দিয়ে স্ক্র্যাচ করো </div>
         </nav>
-        
-        <div id="scratch-container" class="glass overflow-hidden shadow-2xl">
+        <div id="scratch-container" class="glass overflow-hidden shadow-2xl mb-8">
             <canvas id="scratch-canvas"></canvas>
         </div>
-        
-        <div class="text-center mt-12">
-            <button onclick="initScratch()" class="px-6 py-2 border border-black/10 rounded-full text-xs uppercase tracking-widest hover:bg-black hover:text-white transition-all">রিসেট করুন</button>
+        <div class="text-center">
+            <button onclick="initScratch()" class="px-6 py-3 border border-black/10 rounded-full text-xs uppercase tracking-widest hover:bg-black hover:text-white transition-all">রিসেট করুন</button>
+        </div>
+    </div>
+
+    <!-- 4. VIDEO VIEW -->
+    <div id="videoView" class="hidden view-animate">
+        <nav class="flex justify-between items-center mb-12">
+            <button onclick="backToHome()" class="group flex items-center gap-2 text-gray-500 hover:text-black transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                ফিরে যান
+            </button>
+        </nav>
+        <div class="max-w-4xl mx-auto space-y-8">
+            <header class="text-center">
+                <h2 class="text-3xl font-extrabold mb-4">আর্ট প্রসেস ভিডিও</h2>
+            </header>
+            <div class="glass p-2 shadow-2xl">
+                <div class="video-container" id="youtubePlayerContainer"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. AUDIO VIEW -->
+    <div id="audioView" class="hidden view-animate">
+        <nav class="flex justify-between items-center mb-12">
+            <button onclick="backToHome()" class="group flex items-center gap-2 text-gray-500 hover:text-black transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                ফিরে যান
+            </button>
+            <div class="text-sm font-bold opacity-30 uppercase tracking-widest">অডিও অভিজ্ঞতা</div>
+        </nav>
+
+        <div class="max-w-2xl mx-auto">
+            <div class="glass p-4 bg-white shadow-2xl mb-8">
+                <div id="audioImageDisplay" class="w-full flex items-center justify-center overflow-hidden rounded-xl"></div>
+            </div>
+            
+            <div class="glass p-8 bg-white flex flex-col items-center gap-6">
+                <div class="text-center">
+                    <h2 class="text-2xl font-bold mb-2">সুর ও শব্দ</h2>
+                    <p class="text-gray-400 text-sm">আর্টওয়ার্কের সাথে অডিওটি উপভোগ করো</p>
+                </div>
+                <audio id="mainAudioPlayer" controls class="w-full max-w-md"></audio>
+            </div>
         </div>
     </div>
 
     <script>
         /**
-         * 🖼️ IMAGE CONFIGURATION GUIDE:
-         * * 1. GALLERY_IMAGES: Add portrait URLs to this array for the "Portrait Gallery" section.
-         * 2. LETTER_IMAGE: Put the URL of your single portrait/letter image here.
-         * 3. SCRATCH_IMAGE: This is the hidden image revealed when the user "scratches" the canvas.
+         * 🖼️ সেটিংস গাইড (Configuration):
          */
 
+        // ১. গ্যালারি ইমেজের লিস্ট এখানে যোগ করো
         const GALLERY_IMAGES = [
-            'photos/img1.jpg', 
-            'photos/img2.jpg',
-            'photos/img3.jpg',
-            'photos/img4.jpg',
-            'photos/img5.jpg',
-            'photos/img6.jpg',
-            'photos/img7.jpg',
-            'photos/img8.jpg',
-            'photos/img9.jpg',
-            'photos/img10.jpg',
-            'photos/img11.jpg',
-            'photos/img12.jpg'
+            'photos/img1.jpg', 'photos/img2.jpg', 'photos/img3.jpg', 
+            'photos/img4.jpg', 'photos/img5.jpg', 'photos/img6.jpg',
+            'photos/img7.jpg', 'photos/img8.jpg', 'photos/img9.jpg',
+            'photos/img10.jpg', 'photos/img11.jpg', 'photos/img12.jpg'
         ];
 
+        // ২. সিঙ্গেল চিঠির ছবি এখানে দাও
         const LETTER_IMAGE = 'photos/img_letter.jpg';
 
+        // ৩. স্ক্র্যাচকার্ডের লুকানো ছবি এখানে দাও
         const SCRATCH_IMAGE = 'photos/img_saaj.jpg';
+
+        // ৪. ভিডিও স্টোরির জন্য ইউটিউব ভিডিও আইডি (v= এর পরের অংশ)
+        const YOUTUBE_ID = 'g6oob-0Caqc?si=w8X9aHG-XqccIWyf'; 
+
+        // ৫. অডিও পেজের ছবি এবং অডিও ফাইলের লিঙ্ক
+        const AUDIO_CONTENT_IMAGE = 'photos/audio_visual.jpg'; // অডিও পেজের ছবি
+        const AUDIO_FILE_URL = 'photos/gaan1.mp3'; // mp3 লিঙ্ক
 
         // Navigation Logic
         function showView(viewId) {
-            document.getElementById('homeView').classList.add('hidden');
-            document.getElementById('galleryView').classList.add('hidden');
-            document.getElementById('letterView').classList.add('hidden');
-            document.getElementById('scratchView').classList.add('hidden');
+            const views = ['homeView', 'galleryView', 'letterView', 'scratchView', 'videoView', 'audioView'];
+            views.forEach(id => document.getElementById(id).classList.add('hidden'));
             
             document.getElementById(viewId).classList.remove('hidden');
             window.scrollTo(0, 0);
@@ -241,84 +314,75 @@
             if(viewId === 'galleryView') renderGallery();
             if(viewId === 'letterView') renderLetter();
             if(viewId === 'scratchView') initScratch();
+            if(viewId === 'videoView') renderVideo();
+            if(viewId === 'audioView') initAudioView();
         }
 
         function backToHome() {
             showView('homeView');
+            // Stop media when going back
+            document.getElementById('youtubePlayerContainer').innerHTML = '';
+            const player = document.getElementById('mainAudioPlayer');
+            player.pause();
+            player.currentTime = 0;
         }
 
-        // Render Gallery
         function renderGallery() {
             const container = document.getElementById('galleryListContainer');
             container.innerHTML = GALLERY_IMAGES.map(img => `
                 <div class="glass p-2 bg-white aspect-[3/4] overflow-hidden">
-                    <img src="${img}" class="w-full h-full object-contain" alt="Gallery Portrait">
+                    <img src="${img}" class="w-full h-full object-contain" alt="Portrait">
                 </div>
             `).join('');
         }
 
-        // Render Letter
         function renderLetter() {
-            const container = document.getElementById('letterImageContainer');
-            container.innerHTML = `<img src="${LETTER_IMAGE}" class="max-h-[70vh] object-contain shadow-lg">`;
+            document.getElementById('letterImageContainer').innerHTML = `<img src="${LETTER_IMAGE}" class="max-h-[70vh] object-contain shadow-lg">`;
         }
 
-        // Scratchcard Logic
+        function renderVideo() {
+            document.getElementById('youtubePlayerContainer').innerHTML = `
+                <iframe src="https://www.youtube.com/embed/${YOUTUBE_ID}?autoplay=1&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            `;
+        }
+
+        function initAudioView() {
+            document.getElementById('audioImageDisplay').innerHTML = `<img src="${AUDIO_CONTENT_IMAGE}" class="max-h-[60vh] object-contain">`;
+            const audioPlayer = document.getElementById('mainAudioPlayer');
+            audioPlayer.src = AUDIO_FILE_URL;
+            audioPlayer.play().catch(e => console.log("Playback requires user interaction"));
+        }
+
         function initScratch() {
             const container = document.getElementById('scratch-container');
             const canvas = document.getElementById('scratch-canvas');
             const ctx = canvas.getContext('2d');
-            
-            // Set the hidden image as background
             container.style.backgroundImage = `url(${SCRATCH_IMAGE})`;
-            
-            // Set canvas size based on container
             const rect = container.getBoundingClientRect();
-            canvas.width = rect.width;
-            canvas.height = rect.height;
-            
-            // Draw the cover (Scratch Layer)
-            ctx.fillStyle = '#cccccc'; // Solid gray layer
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            // Add some "texture" to the cover
+            canvas.width = rect.width; canvas.height = rect.height;
+            ctx.fillStyle = '#cccccc'; ctx.fillRect(0, 0, canvas.width, canvas.height);
             ctx.fillStyle = '#bbbbbb';
             for(let i=0; i<100; i++) {
-                ctx.beginPath();
-                ctx.arc(Math.random()*canvas.width, Math.random()*canvas.height, 1, 0, Math.PI*2);
-                ctx.fill();
+                ctx.beginPath(); ctx.arc(Math.random()*canvas.width, Math.random()*canvas.height, 1, 0, Math.PI*2); ctx.fill();
             }
-
-            // Scratch Functionality
             let isDrawing = false;
-
             function scratch(e) {
                 if (!isDrawing) return;
-                
-                const rect = canvas.getBoundingClientRect();
-                const x = (e.clientX || e.touches[0].clientX) - rect.left;
-                const y = (e.clientY || e.touches[0].clientY) - rect.top;
-
-                ctx.globalCompositeOperation = 'destination-out';
-                ctx.beginPath();
-                ctx.arc(x, y, 25, 0, Math.PI * 2);
-                ctx.fill();
+                const r = canvas.getBoundingClientRect();
+                const x = (e.clientX || e.touches[0].clientX) - r.left;
+                const y = (e.clientY || e.touches[0].clientY) - r.top;
+                ctx.globalCompositeOperation = 'destination-out'; ctx.beginPath(); ctx.arc(x, y, 25, 0, Math.PI * 2); ctx.fill();
             }
-
             canvas.addEventListener('mousedown', () => isDrawing = true);
             canvas.addEventListener('mouseup', () => isDrawing = false);
             canvas.addEventListener('mousemove', scratch);
-            
             canvas.addEventListener('touchstart', (e) => { isDrawing = true; e.preventDefault(); });
             canvas.addEventListener('touchend', () => isDrawing = false);
             canvas.addEventListener('touchmove', (e) => { scratch(e); e.preventDefault(); });
         }
         
-        // Ensure scratch canvas resizes correctly
         window.addEventListener('resize', () => {
-            if(!document.getElementById('scratchView').classList.contains('hidden')) {
-                initScratch();
-            }
+            if(!document.getElementById('scratchView').classList.contains('hidden')) initScratch();
         });
     </script>
 </body>
